@@ -1,0 +1,20 @@
+reset;
+option show_stats 1;
+option omit_zero_rows 1;
+option omit_zero_col 1;
+option display_1col 10000;
+option csvdisplay_header 0;  
+option solver gurobi;
+option cplex_options 'outlev 1';
+option gurobi_options 'outlev 1';
+
+model Models/gat1_dcep.mod;
+
+data Datas/Artificials/i1.dat;
+
+solve;
+
+display x;
+display g;
+display card{(u,v,'links') in Edges : g[u,v,'links'] = 1};
+display card({(u,v,'links') in Edges : g[u,v,'links'].val == 1 and (s[v] < 1)}); 

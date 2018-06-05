@@ -1,0 +1,28 @@
+reset;
+option show_stats 1;
+option omit_zero_rows 1;
+option omit_zero_col 1;
+option display_1col 10000;
+option csvdisplay_header 0;  
+option solver gurobi;
+option cplex_options 'outlev 1';
+option gurobi_options 'outlev 1';
+
+model Models/mtz_dcep.mod;
+
+data Datas/Artificials/i1.dat;
+
+let Edges_prime := Edges;
+for {v in V} let Edges_prime := Edges_prime union {('s', v, 'overlaps'), (v, 't', 'overlaps')};
+for {(u,v,'overlaps') in Edges_prime}{
+	if(u = 's') then let l_st[u,v,'overlaps'] := 0;
+	else if (v = 't') then let l_st[u,v,'overlaps'] := w[u];
+	else let l_st[u,v,'overlaps'] := l[u,v,'overlaps'];
+}
+
+solve;
+
+display x;
+display y;
+display g;
+display card{(u,v,'links') in Edges : g[u,v,'links'] = 1};

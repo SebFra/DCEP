@@ -1,0 +1,946 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key attr.name="key" attr.type="long" for="edge" id="d5" />
+  <key attr.name="Distance" attr.type="long" for="edge" id="d4" />
+  <key attr.name="Type" attr.type="string" for="edge" id="d3" />
+  <key attr.name="Start" attr.type="boolean" for="node" id="d2" />
+  <key attr.name="BigUnitig" attr.type="boolean" for="node" id="d1" />
+  <key attr.name="UnitigLength" attr.type="double" for="node" id="d0" />
+  <graph edgedefault="directed">
+    <node id="7_1_R">
+      <data key="d0">479.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="27_0_R">
+      <data key="d0">1439.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="55_0_R">
+      <data key="d0">195.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="70_1_F">
+      <data key="d0">1374.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="35_0_R">
+      <data key="d0">10213.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="55_1_F">
+      <data key="d0">195.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="74_0_R">
+      <data key="d0">5980.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="101_0_F">
+      <data key="d0">2062.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="26_0_F">
+      <data key="d0">1255.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="94_1_R">
+      <data key="d0">243.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="76_1_R">
+      <data key="d0">445.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="98_0_F">
+      <data key="d0">3069.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="1_0_R">
+      <data key="d0">1547.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="15_1_R">
+      <data key="d0">786.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="65_0_R">
+      <data key="d0">21662.0</data>
+      <data key="d1">True</data>
+      <data key="d2">True</data>
+    </node>
+    <node id="84_0_F">
+      <data key="d0">439.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="24_0_R">
+      <data key="d0">1696.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="3_1_F">
+      <data key="d0">816.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="76_0_F">
+      <data key="d0">445.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="3_0_R">
+      <data key="d0">816.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="97_0_F">
+      <data key="d0">326.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="1_1_F">
+      <data key="d0">1547.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="54_0_R">
+      <data key="d0">277.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="75_0_R">
+      <data key="d0">267.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="5_1_F">
+      <data key="d0">452.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="23_0_R">
+      <data key="d0">1630.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="80_1_R">
+      <data key="d0">1628.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="70_0_R">
+      <data key="d0">1374.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="100_0_R">
+      <data key="d0">4472.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="71_1_R">
+      <data key="d0">282.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="33_0_R">
+      <data key="d0">9256.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="75_1_F">
+      <data key="d0">267.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="85_0_F">
+      <data key="d0">7427.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="108_1_F">
+      <data key="d0">2823.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="56_0_F">
+      <data key="d0">4608.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="94_0_F">
+      <data key="d0">243.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="24_1_F">
+      <data key="d0">1696.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="91_1_F">
+      <data key="d0">771.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="7_0_F">
+      <data key="d0">479.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="15_0_F">
+      <data key="d0">786.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="54_1_F">
+      <data key="d0">277.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="85_1_R">
+      <data key="d0">7427.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="28_0_R">
+      <data key="d0">580.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="108_0_R">
+      <data key="d0">2823.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="42_0_F">
+      <data key="d0">3308.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="98_1_R">
+      <data key="d0">3069.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="28_1_F">
+      <data key="d0">580.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="40_0_R">
+      <data key="d0">20958.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="103_0_F">
+      <data key="d0">6118.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="71_0_F">
+      <data key="d0">282.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="73_0_R">
+      <data key="d0">5137.0</data>
+      <data key="d1">True</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="91_0_R">
+      <data key="d0">771.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="51_0_F">
+      <data key="d0">3322.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="49_0_F">
+      <data key="d0">4342.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="23_1_F">
+      <data key="d0">1630.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="5_0_R">
+      <data key="d0">452.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="97_1_R">
+      <data key="d0">326.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <node id="80_0_F">
+      <data key="d0">1628.0</data>
+      <data key="d1">False</data>
+      <data key="d2">False</data>
+    </node>
+    <edge source="7_1_R" target="3_1_F">
+      <data key="d3">links</data>
+      <data key="d4">4432</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="7_1_R" target="5_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="27_0_R" target="101_0_F">
+      <data key="d3">links</data>
+      <data key="d4">4400</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="27_0_R" target="56_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="27_0_R" target="56_0_F">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="55_0_R" target="23_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="70_1_F" target="80_1_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="70_1_F" target="24_1_F">
+      <data key="d3">links</data>
+      <data key="d4">3631</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="35_0_R" target="103_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="35_0_R" target="103_0_F">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="55_1_F" target="54_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="74_0_R" target="85_1_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="74_0_R" target="85_1_R">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="101_0_F" target="100_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="101_0_F" target="100_0_R">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="101_0_F" target="65_0_R">
+      <data key="d3">links</data>
+      <data key="d4">4264</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="26_0_F" target="1_0_R">
+      <data key="d3">links</data>
+      <data key="d4">3817</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="26_0_F" target="28_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="26_0_F" target="76_0_F">
+      <data key="d3">links</data>
+      <data key="d4">3476</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="94_1_R" target="91_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="76_1_R" target="75_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="76_1_R" target="27_0_R">
+      <data key="d3">links</data>
+      <data key="d4">3476</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="98_0_F" target="85_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="98_0_F" target="85_0_F">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="1_0_R" target="24_0_R">
+      <data key="d3">links</data>
+      <data key="d4">2398</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="1_0_R" target="91_0_R">
+      <data key="d3">links</data>
+      <data key="d4">3990</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="1_0_R" target="3_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="15_1_R" target="7_1_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="15_1_R" target="23_1_F">
+      <data key="d3">links</data>
+      <data key="d4">3017</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="65_0_R" target="40_0_R">
+      <data key="d3">links</data>
+      <data key="d4">3100</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="65_0_R" target="42_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="65_0_R" target="42_0_F">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="84_0_F" target="51_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="84_0_F" target="49_0_F">
+      <data key="d3">links</data>
+      <data key="d4">3114</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="24_0_R" target="91_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="24_0_R" target="70_0_R">
+      <data key="d3">links</data>
+      <data key="d4">3631</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="24_0_R" target="80_0_F">
+      <data key="d3">links</data>
+      <data key="d4">2107</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="3_1_F" target="108_1_F">
+      <data key="d3">links</data>
+      <data key="d4">2065</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="3_1_F" target="1_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="76_0_F" target="1_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="76_0_F" target="24_0_R">
+      <data key="d3">links</data>
+      <data key="d4">3841</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="3_0_R" target="54_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="3_0_R" target="5_0_R">
+      <data key="d3">links</data>
+      <data key="d4">4084</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="3_0_R" target="7_0_F">
+      <data key="d3">links</data>
+      <data key="d4">4432</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="97_0_F" target="75_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="1_1_F" target="76_1_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="1_1_F" target="27_0_R">
+      <data key="d3">links</data>
+      <data key="d4">3817</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="1_1_F" target="28_1_F">
+      <data key="d3">links</data>
+      <data key="d4">3341</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="54_0_R" target="55_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="75_0_R" target="76_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="5_1_F" target="3_1_F">
+      <data key="d3">links</data>
+      <data key="d4">4084</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="5_1_F" target="94_1_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="23_0_R" target="24_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="23_0_R" target="15_0_F">
+      <data key="d3">links</data>
+      <data key="d4">3017</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="23_0_R" target="80_0_F">
+      <data key="d3">links</data>
+      <data key="d4">3699</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="80_1_R" target="23_1_F">
+      <data key="d3">links</data>
+      <data key="d4">3699</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="80_1_R" target="24_1_F">
+      <data key="d3">links</data>
+      <data key="d4">2107</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="80_1_R" target="15_1_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="70_0_R" target="85_0_F">
+      <data key="d3">links</data>
+      <data key="d4">3039</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="70_0_R" target="71_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="100_0_R" target="65_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="100_0_R" target="65_0_R">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="71_1_R" target="70_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="33_0_R" target="35_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="33_0_R" target="35_0_R">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="75_1_F" target="97_1_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="85_0_F" target="51_0_F">
+      <data key="d3">links</data>
+      <data key="d4">231</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="85_0_F" target="84_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="85_0_F" target="84_0_F">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="85_0_F" target="49_0_F">
+      <data key="d3">links</data>
+      <data key="d4">3449</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="108_1_F" target="56_0_F">
+      <data key="d3">links</data>
+      <data key="d4">1707</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="108_1_F" target="28_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="56_0_F" target="100_0_R">
+      <data key="d3">links</data>
+      <data key="d4">1854</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="56_0_F" target="101_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="56_0_F" target="101_0_F">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="94_0_F" target="5_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="24_1_F" target="23_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="24_1_F" target="76_1_R">
+      <data key="d3">links</data>
+      <data key="d4">3841</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="24_1_F" target="1_1_F">
+      <data key="d3">links</data>
+      <data key="d4">2398</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="91_1_F" target="24_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="91_1_F" target="1_1_F">
+      <data key="d3">links</data>
+      <data key="d4">3990</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="7_0_F" target="15_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="7_0_F" target="98_0_F">
+      <data key="d3">links</data>
+      <data key="d4">3550</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="15_0_F" target="98_0_F">
+      <data key="d3">links</data>
+      <data key="d4">2868</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="15_0_F" target="80_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="54_1_F" target="3_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="85_1_R" target="80_1_R">
+      <data key="d3">links</data>
+      <data key="d4">4309</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="85_1_R" target="70_1_F">
+      <data key="d3">links</data>
+      <data key="d4">3039</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="85_1_R" target="98_1_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="85_1_R" target="98_1_R">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="28_0_R" target="1_0_R">
+      <data key="d3">links</data>
+      <data key="d4">3341</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="28_0_R" target="108_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="108_0_R" target="3_0_R">
+      <data key="d3">links</data>
+      <data key="d4">2065</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="108_0_R" target="97_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="108_0_R" target="23_0_R">
+      <data key="d3">links</data>
+      <data key="d4">3041</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="42_0_F" target="40_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="42_0_F" target="40_0_R">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="98_1_R" target="71_1_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="98_1_R" target="91_1_F">
+      <data key="d3">links</data>
+      <data key="d4">4412</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="98_1_R" target="7_1_R">
+      <data key="d3">links</data>
+      <data key="d4">3550</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="98_1_R" target="80_1_R">
+      <data key="d3">links</data>
+      <data key="d4">1344</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="98_1_R" target="5_1_F">
+      <data key="d3">links</data>
+      <data key="d4">3925</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="98_1_R" target="15_1_R">
+      <data key="d3">links</data>
+      <data key="d4">2868</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="28_1_F" target="27_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="28_1_F" target="56_0_F">
+      <data key="d3">links</data>
+      <data key="d4">1231</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="40_0_R" target="33_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="40_0_R" target="33_0_R">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="103_0_F" target="28_0_R">
+      <data key="d3">links</data>
+      <data key="d4">1047</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="103_0_F" target="108_0_R">
+      <data key="d3">links</data>
+      <data key="d4">1523</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="103_0_F" target="26_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="103_0_F" target="26_0_F">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="71_0_F" target="98_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="73_0_R" target="74_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="73_0_R" target="74_0_R">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="91_0_R" target="94_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="91_0_R" target="98_0_F">
+      <data key="d3">links</data>
+      <data key="d4">4412</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="51_0_F" target="73_0_R">
+      <data key="d3">links</data>
+      <data key="d4">4134</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="51_0_F" target="49_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="51_0_F" target="49_0_F">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="49_0_F" target="73_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="49_0_F" target="73_0_R">
+      <data key="d3">links</data>
+      <data key="d4">-104</data>
+      <data key="d5">1</data>
+    </edge>
+    <edge source="23_1_F" target="108_1_F">
+      <data key="d3">links</data>
+      <data key="d4">3041</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="23_1_F" target="55_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="5_0_R" target="98_0_F">
+      <data key="d3">links</data>
+      <data key="d4">3925</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="5_0_R" target="7_0_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="97_1_R" target="108_1_F">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="80_0_F" target="70_0_R">
+      <data key="d3">overlaps</data>
+      <data key="d4">-104</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="80_0_F" target="85_0_F">
+      <data key="d3">links</data>
+      <data key="d4">4309</data>
+      <data key="d5">0</data>
+    </edge>
+    <edge source="80_0_F" target="98_0_F">
+      <data key="d3">links</data>
+      <data key="d4">1344</data>
+      <data key="d5">0</data>
+    </edge>
+  </graph>
+</graphml>
