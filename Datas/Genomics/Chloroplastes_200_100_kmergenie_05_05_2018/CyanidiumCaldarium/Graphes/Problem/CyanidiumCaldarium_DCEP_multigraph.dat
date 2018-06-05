@@ -1,0 +1,233 @@
+data;
+param Title := CyanidiumCaldarium;
+param start := "25_0_R";
+set V :=
+8_0_R
+32_0_F
+26_0_R
+18_0_F
+26_0_F
+18_0_R
+5_0_F
+6_0_F
+3_0_R
+10_0_F
+1_0_R
+16_0_R
+15_0_F
+36_0_F
+6_0_R
+25_0_R
+8_0_F
+37_0_F
+5_0_R
+16_0_F
+10_0_R
+3_0_F
+32_0_R
+25_0_F
+36_0_R
+1_0_F
+15_0_R
+37_0_R
+;
+param w :=
+8_0_R	863
+32_0_F	6444
+26_0_R	21363
+18_0_F	15183
+26_0_F	21363
+18_0_R	15183
+5_0_F	4505
+6_0_F	3641
+3_0_R	2645
+10_0_F	179
+1_0_R	3620
+16_0_R	2895
+15_0_F	35694
+36_0_F	1157
+6_0_R	3641
+25_0_R	51420
+8_0_F	863
+37_0_F	16852
+5_0_R	4505
+16_0_F	2895
+10_0_R	179
+3_0_F	2645
+32_0_R	6444
+25_0_F	51420
+36_0_R	1157
+1_0_F	3620
+15_0_R	35694
+37_0_R	16852
+;
+set reverse :=
+8_0_R	8_0_F
+32_0_F	32_0_R
+26_0_R	26_0_F
+18_0_F	18_0_R
+26_0_F	26_0_R
+18_0_R	18_0_F
+5_0_F	5_0_R
+6_0_F	6_0_R
+3_0_R	3_0_F
+10_0_F	10_0_R
+1_0_R	1_0_F
+16_0_R	16_0_F
+15_0_F	15_0_R
+36_0_F	36_0_R
+6_0_R	6_0_F
+25_0_R	25_0_F
+8_0_F	8_0_R
+37_0_F	37_0_R
+5_0_R	5_0_F
+16_0_F	16_0_R
+10_0_R	10_0_F
+3_0_F	3_0_R
+32_0_R	32_0_F
+25_0_F	25_0_R
+36_0_R	36_0_F
+1_0_F	1_0_R
+15_0_R	15_0_F
+37_0_R	37_0_F
+;
+set Edges :=
+8_0_R	10_0_F	overlaps
+8_0_R	25_0_F	links
+32_0_F	15_0_R	links
+32_0_F	16_0_F	overlaps
+32_0_F	16_0_F	links
+26_0_R	25_0_R	overlaps
+26_0_R	25_0_R	links
+18_0_F	6_0_R	overlaps
+18_0_F	6_0_R	links
+18_0_F	5_0_F	links
+26_0_F	37_0_F	overlaps
+26_0_F	37_0_F	links
+18_0_R	37_0_R	links
+18_0_R	36_0_R	overlaps
+18_0_R	36_0_R	links
+5_0_F	32_0_F	overlaps
+5_0_F	32_0_F	links
+6_0_F	18_0_R	overlaps
+6_0_F	18_0_R	links
+3_0_R	8_0_R	links
+3_0_R	25_0_F	links
+3_0_R	1_0_F	overlaps
+3_0_R	1_0_F	links
+10_0_F	25_0_F	overlaps
+1_0_R	3_0_F	overlaps
+1_0_R	3_0_F	links
+1_0_R	15_0_F	links
+16_0_R	32_0_R	overlaps
+16_0_R	32_0_R	links
+15_0_F	32_0_R	links
+15_0_F	16_0_R	overlaps
+15_0_F	16_0_R	links
+36_0_F	18_0_F	overlaps
+36_0_F	18_0_F	links
+6_0_R	5_0_F	overlaps
+6_0_R	5_0_F	links
+6_0_R	32_0_F	links
+25_0_R	3_0_F	links
+25_0_R	8_0_F	links
+25_0_R	1_0_R	links
+25_0_R	10_0_R	overlaps
+8_0_F	3_0_F	links
+8_0_F	1_0_R	overlaps
+37_0_F	18_0_F	links
+37_0_F	36_0_F	overlaps
+37_0_F	36_0_F	links
+5_0_R	6_0_F	overlaps
+5_0_R	6_0_F	links
+5_0_R	18_0_R	links
+16_0_F	15_0_R	overlaps
+16_0_F	15_0_R	links
+10_0_R	8_0_F	overlaps
+3_0_F	15_0_F	overlaps
+3_0_F	15_0_F	links
+32_0_R	5_0_R	overlaps
+32_0_R	5_0_R	links
+32_0_R	6_0_F	links
+25_0_F	26_0_F	overlaps
+25_0_F	26_0_F	links
+36_0_R	37_0_R	overlaps
+36_0_R	37_0_R	links
+1_0_F	8_0_R	overlaps
+1_0_F	25_0_F	links
+15_0_R	1_0_F	links
+15_0_R	3_0_R	overlaps
+15_0_R	3_0_R	links
+37_0_R	26_0_R	overlaps
+37_0_R	26_0_R	links
+;
+param l :=
+8_0_R	10_0_F	overlaps	753
+8_0_R	25_0_F	links	981
+32_0_F	15_0_R	links	9259
+32_0_F	16_0_F	overlaps	6334
+32_0_F	16_0_F	links	6451
+26_0_R	25_0_R	overlaps	21253
+26_0_R	25_0_R	links	21411
+18_0_F	6_0_R	overlaps	15073
+18_0_F	6_0_R	links	15209
+18_0_F	5_0_F	links	18701
+26_0_F	37_0_F	overlaps	21253
+26_0_F	37_0_F	links	21393
+18_0_R	37_0_R	links	16289
+18_0_R	36_0_R	overlaps	15073
+18_0_R	36_0_R	links	15189
+5_0_F	32_0_F	overlaps	4395
+5_0_F	32_0_F	links	4543
+6_0_F	18_0_R	overlaps	3531
+6_0_F	18_0_R	links	3667
+3_0_R	8_0_R	links	6136
+3_0_R	25_0_F	links	7003
+3_0_R	1_0_F	overlaps	2535
+3_0_R	1_0_F	links	2656
+10_0_F	25_0_F	overlaps	69
+1_0_R	3_0_F	overlaps	3510
+1_0_R	3_0_F	links	3631
+1_0_R	15_0_F	links	6189
+16_0_R	32_0_R	overlaps	2785
+16_0_R	32_0_R	links	2902
+15_0_F	32_0_R	links	38509
+15_0_F	16_0_R	overlaps	35584
+15_0_F	16_0_R	links	35760
+36_0_F	18_0_F	overlaps	1047
+36_0_F	18_0_F	links	1157
+6_0_R	5_0_F	overlaps	3531
+6_0_R	5_0_F	links	3748
+6_0_R	32_0_F	links	7986
+25_0_R	3_0_F	links	55790
+25_0_R	8_0_F	links	51485
+25_0_R	1_0_R	links	52281
+25_0_R	10_0_R	overlaps	51310
+8_0_F	3_0_F	links	4354
+8_0_F	1_0_R	overlaps	753
+37_0_F	18_0_F	links	17958
+37_0_F	36_0_F	overlaps	16742
+37_0_F	36_0_F	links	16881
+5_0_R	6_0_F	overlaps	4395
+5_0_R	6_0_F	links	4529
+5_0_R	18_0_R	links	8023
+16_0_F	15_0_R	overlaps	2785
+16_0_F	15_0_R	links	2960
+10_0_R	8_0_F	overlaps	69
+3_0_F	15_0_F	overlaps	2535
+3_0_F	15_0_F	links	2740
+32_0_R	5_0_R	overlaps	6334
+32_0_R	5_0_R	links	6486
+32_0_R	6_0_F	links	10792
+25_0_F	26_0_F	overlaps	51310
+25_0_F	26_0_F	links	51461
+36_0_R	37_0_R	overlaps	1047
+36_0_R	37_0_R	links	1198
+1_0_F	8_0_R	overlaps	3510
+1_0_F	25_0_F	links	4497
+15_0_R	1_0_F	links	38224
+15_0_R	3_0_R	overlaps	35584
+15_0_R	3_0_R	links	35789
+37_0_R	26_0_R	overlaps	16742
+37_0_R	26_0_R	links	16882
+;
