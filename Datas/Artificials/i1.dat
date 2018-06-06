@@ -1,0 +1,63 @@
+data;
+param Title := TestInstance1;
+param start := "1_0_F";
+set V :=
+1_0_F
+1_0_R
+2_0_F
+2_0_R
+3_0_F
+3_0_R
+4_0_F
+4_0_R
+;
+
+param w :=
+1_0_F	1000
+1_0_R	1000
+2_0_F	500
+2_0_R	500
+3_0_F	400
+3_0_R	400
+4_0_F	5100
+4_0_R	5100
+;
+
+set reverse :=
+1_0_F	1_0_R
+1_0_R	1_0_F
+2_0_F	2_0_R
+2_0_R	2_0_F
+3_0_F	3_0_R
+3_0_R	3_0_F
+4_0_F	4_0_R
+4_0_R	4_0_F
+;
+set Edges :=
+1_0_F	2_0_F	overlaps
+2_0_F	3_0_F	overlaps
+3_0_F	4_0_F	overlaps
+4_0_F	1_0_F	overlaps
+2_0_R	1_0_R	overlaps
+1_0_R	4_0_R	overlaps
+4_0_R	3_0_R	overlaps
+3_0_R	2_0_R	overlaps
+1_0_F	2_0_F	links
+3_0_F	1_0_F	links
+2_0_R	1_0_R	links
+1_0_R	3_0_R	links
+;
+param l :=
+1_0_F	2_0_F	overlaps	900
+2_0_F	3_0_F	overlaps	420
+3_0_F	4_0_F	overlaps	320
+4_0_F	1_0_F	overlaps	5000
+2_0_R	1_0_R	overlaps	900
+1_0_R	4_0_R	overlaps	5000
+4_0_R	3_0_R	overlaps	320
+3_0_R	2_0_R	overlaps	420
+1_0_F	2_0_F	links	1050
+3_0_F	1_0_F	links	1100
+2_0_R	1_0_R	links	1050
+1_0_R	3_0_R	links	1100
+;
