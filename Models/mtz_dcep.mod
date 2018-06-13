@@ -18,7 +18,7 @@ var i{V}, binary;
 var y{V_prime} integer >= 0, <=W;
 var g{(u,v,c) in Edges : c = 'links'} binary;
 
-maximize nb_links_satisfied : M*sum{(u,v,'links') in Edges}g[u,v,'links'] + sum{v in V}y[v];
+maximize nb_links_satisfied : sum{(u,v,'links') in Edges}g[u,v,'links'];
 
 #standart constraints
 intermediate_means_just_one_predecessor{u in V} : sum{(u,v,'overlaps') in Edges_prime} x[u,v,'overlaps'] = i[u];
@@ -39,3 +39,4 @@ links_satisfied_target_must_participate{(u,v,c) in Edges : c = 'links'} : g[u,v,
 links_distance_bound_inf{(u,v,c) in Edges : c = 'links'} : y[u] - y[v] >= (l[u,v,c] - marge_error)*g[u,v,c] - M*(1-g[u,v,c]);
 links_distance_bound_sup{(u,v,c) in Edges : c = 'links'} : y[u] - y[v]  <= (l[u,v,c] + marge_error)*g[u,v,c] + M*(1-g[u,v,c]);
 
+c: y['s'] - y['t'] = sum{(u,v,'overlaps') in Edges_prime} x[u,v,'overlaps']*l_st[u,v,'overlaps'];
