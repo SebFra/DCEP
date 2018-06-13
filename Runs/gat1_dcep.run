@@ -10,11 +10,10 @@ option gurobi_options 'outlev 1';
 
 model Models/gat1_dcep.mod;
 
-data Datas/Artificials/i1.dat;
+data Datas/Genomics/Chloroplastes_200_100_kmergenie_05_05_2018/AcorusCalamus/Graphes/Problem/AcorusCalamus_DCEP_multigraph.dat;
 
 solve;
 
 display x;
 display g;
 display card{(u,v,'links') in Edges : g[u,v,'links'] = 1};
-display card({(u,v,'links') in Edges : g[u,v,'links'].val == 1 and (s[v] < 1)}); 

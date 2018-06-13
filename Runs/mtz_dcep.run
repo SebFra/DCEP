@@ -6,11 +6,11 @@ option display_1col 10000;
 option csvdisplay_header 0;  
 option solver gurobi;
 option cplex_options 'outlev 1';
-option gurobi_options 'outlev 1';
+option gurobi_options 'outlev 1 MIPFocus 2';
 
 model Models/mtz_dcep.mod;
 
-data Datas/Artificials/i1.dat;
+data Datas/Genomics/Chloroplastes_200_100_kmergenie_05_05_2018/AcorusCalamus/Graphes/Problem/AcorusCalamus_DCEP_multigraph.dat;
 
 let Edges_prime := Edges;
 for {v in V} let Edges_prime := Edges_prime union {('s', v, 'overlaps'), (v, 't', 'overlaps')};
@@ -26,3 +26,4 @@ display x;
 display y;
 display g;
 display card{(u,v,'links') in Edges : g[u,v,'links'] = 1};
+display {(u,v,'links') in Edges : g[u,v,'links'] = 1 } (y[u] - y[v]);

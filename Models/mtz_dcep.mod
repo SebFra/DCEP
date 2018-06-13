@@ -15,7 +15,7 @@ param W := sum{(u,v,c) in Edges : c = 'overlaps'}l[u,v,c];
 
 var x{(u,v,c) in Edges_prime : c = 'overlaps'} binary;
 var i{V}, binary;
-var y{V_prime} integer >= 0;
+var y{V_prime} integer >= 0, <=W;
 var g{(u,v,c) in Edges : c = 'links'} binary;
 
 maximize nb_links_satisfied : M*sum{(u,v,'links') in Edges}g[u,v,'links'] + sum{v in V}y[v];
@@ -24,6 +24,7 @@ maximize nb_links_satisfied : M*sum{(u,v,'links') in Edges}g[u,v,'links'] + sum{
 intermediate_means_just_one_predecessor{u in V} : sum{(u,v,'overlaps') in Edges_prime} x[u,v,'overlaps'] = i[u];
 intermediate_input_equals_output{u in V}: sum{(u,v,'overlaps') in Edges_prime}x[u,v,'overlaps'] = sum{(v,u,'overlaps') in Edges_prime}x[v,u,'overlaps'];
 
+initialisation_y_s : y['s'] = W;
 source_output_constr: sum{(u,v,c) in Edges_prime : u = 's'} x[u,v,c] = 1;
 target_output_constr: sum{(u,v,c) in Edges_prime : v = 't'} x[u,v,c] = 1;
 
