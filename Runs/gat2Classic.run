@@ -1,0 +1,77 @@
+reset;
+option show_stats 1;
+option omit_zero_rows 1;
+option omit_zero_col 1;
+option display_1col 10000;
+option csvdisplay_header 0;  
+option solver gurobi;
+option cplex_options 'outlev 1 timelim 10000';
+option gurobi_options 'outlev 1 timelim 10000';
+
+model 'gat2_light_plc.mod';
+#data '/media/seb/DATA/Seb/These/Datas/Bacterias/Acineto/Graphes/Problem/Acineto.dat';
+#data '/media/seb/DATA/Seb/These/Datas/Bacterias/Wolbachia/Graphes/Problem/Wolbachia.dat';
+#data '/media/seb/DATA/Seb/These/Datas/Chloroplastes/Agrostis/Graphes/Problem/Agrostis.dat';
+#data '../Chloroplastes/Acorus/Graphes/Problem/Acorus.dat';
+#data AcorusCalamus.dat;
+#data AngiopterisEvecta.dat;
+#data AgrostisStolonifera.dat;
+data Bacteries/Acineto_iteration0_SR.dat;
+#data AgrostisStolonifera.dat;
+#param path := "/media/seb/DATA/Seb/These/Datas/Chloroplastes/Agrostis/Graphes/Multiple_Solutions/DataEdgesSolution";
+
+for {(u,v) in artificialO :  v in {target}} let la[u,target] := l[u,start];
+for {(u,v) in newO}{
+ 	if v in {target} then let la[u,target] := l[u,start];
+ 	else let la[u,v] := l[u,v];
+}
+
+for {(u,v) in artificialL :  v in {target}} let b_inf_a[u,target] := b_inf[u,start];
+for {(u,v) in newL}{
+ 	if v in {target} then let b_inf_a[u,target] := b_inf[u,start];
+ 	else let b_inf_a[u,v] := b_inf[u,v];
+}
+
+for {(u,v) in artificialL :  v in {target}} let b_sup_a[u,target] := b_sup[u,start];
+for {(u,v) in newL}{
+ 	if v in {target} then let b_sup_a[u,target] := b_sup[u,start];
+ 	else let b_sup_a[u,v] := b_sup[u,v];
+}
+
+display start;
+display target;
+
+solve;
+
+display (sum{v in Vi} i[v]*w[v]);
+model 'gat2_light_mp.mod';
+solve;
+
+for {(u,v) in artificialL:v in {target}}{
+	if g[u,v] >= 0.9 then {
+		fix g[u,start] := 1;
+		fix g[u,v] := 0;
+	}
+}
+
+param distances_satisfied{(u,v) in newL: g[u,v].val >= 0.9}, integer;
+for{(u,v) in newL: g[u,v].val >= 0.9}{
+	let distances_satisfied[u,v] := sum{(u,n) in newO} f[u,n] - sum{(n,v) in newO} f[n,v] + sum{(n,v) in newO} x[n,v]*l[n,v];
+}
+
+display artificialL;
+display {(u,v) in L : g[u,v] >= 0.9} (u,v,g[u,v]);
+display g;
+display {(u,v) in newO : x[u,v] >= 0.9} (u,v,x[u,v]);
+display {(u,v) in newO:f[u,v] >= 1} (u,v,f[u,v]);
+display card(Vi);
+display sum{u in Vi}i[u];
+display artificialL;
+
+display card(V);
+display card(O);
+display card(L);
+display card(newO) + card(L);
+display card(V)+2 +card(newO);
+display sum{(u,v) in newO} x[u,v]*la[u,v] + sum{v in Vi} w[v]*i[v] + w[start];
+display sum{(u,v) in newL} g[u,v];
