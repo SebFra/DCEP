@@ -135,6 +135,7 @@ def delete_all_nodes_smaller_than(graph_ml, kmer_size, overlaps_min):
     graph_to_graphml(graph_copy, workdir, name + "before_deletion")
     return graph_file
 
+
 def delete_all_nodes_smaller_than_size(graph_ml, size_min):
     workdir = os.path.dirname(os.path.abspath(str(graph_ml)))
     graph = nx.read_graphml(graph_ml)
@@ -329,7 +330,7 @@ def create_graphs_problem_from_step(file_step, name_subject):
 
     Nodes, Overlaps, Links = parser.parse_file_with_edges_division(file_step)
     print("Nodes : ", Nodes)
-    print("Overlaps : ",Overlaps)
+    print("Overlaps : ", Overlaps)
     print("Links : ", Links)
     if not Links:
         longest_link = 0
@@ -340,7 +341,7 @@ def create_graphs_problem_from_step(file_step, name_subject):
     OverlapsGraph = delete_singletons(OverlapsGraph)
     graph_file_overlaps = graph_to_graphml(OverlapsGraph, workdir, name_subject + '_overlaps')
     LinksGraph = create_graph_for_model(Nodes, Links, longest_link)
-    #LinksGraph = clean_graph_from_source_and_sink(LinksGraph)
+    # LinksGraph = clean_graph_from_source_and_sink(LinksGraph)
     # LinksGraph = delete_singletons(LinksGraph)
     graph_file_links = graph_to_graphml(LinksGraph, workdir, name_subject + '_links')
 
@@ -720,6 +721,109 @@ def clean_graph_from_source_and_sink(graphe):
         nodes_to_delete = [node for node in list_nodes if
                            graphe.successors(node) == [] or graphe.predecessors(node) == []]
     return graphe
+
+
+def add_nodes_and_overlaps_to_multigraph(multigraph, ovl_graph):
+    nodes = ovl_graph.nodes()
+    for node in nodes:
+        multigraph.add_node(node, UnitigLength=ovl_graph.node[node]['UnitigLength'],
+                            BigUnitig=ovl_graph.node[node]['BigUnitig'])
+    for (u, v) in ovl_graph.edges():
+        multigraph.add_edge(u, v, Distance=ovl_graph.edge[u][v]['Distance'], Type="overlaps")
+
+
+def add_links_to_multigraph(multigraph, links_graph):
+    for (u, v) in links_graph.edges():
+        multigraph.add_edge(u, v, Distance=links_graph.edge[u][v]['Distance'],
+                            Distance_min=links_graph.edge[u][v]['Distance_min'],
+                            Distance_max=links_graph.edge[u][v]['Distance_max'], Type="links")
+
+
+def delete_all_singletons(multigraph):
+    multigraph.remove_nodes_from(nx.isolates(multigraph))
+    return multigraph
+
+
+def add_links_to_multigraph_if_repetition_factor_less_than(multigraph, links_graph, repetition_factor):
+    for (u, v) in links_graph.edges():
+        u_split = u.split('_')
+        v_split = v.split('_')
+        if int(u_split[1]) <= repetition_factor and int(v_split[1]) <= repetition_factor:
+            multigraph.add_edge(u, v, Distance=links_graph.edge[u][v]['Distance'],
+                                Distance_min=links_graph.edge[u][v]['Distance_min'],
+                                Distance_max=links_graph.edge[u][v]['Distance_max'], Type="links")
+
+
+def create_multigraph_problem(ovl_graph_file, links_graph_file, workdir):
+    ovl_graph = nx.read_graphml(ovl_graph_file)
+    links_graph = nx.read_graphml(links_graph_file)
+
+    multigraph = nx.MultiDiGraph()
+
+    add_nodes_and_overlaps_to_multigraph(multigraph, ovl_graph)
+    add_links_to_multigraph(multigraph, links_graph)
+    name = os.path.basename(ovl_graph_file).split('_')[0]
+    print("MultiGraph creation :")
+    print(workdir + name + '_multigraph.graphml')
+    # multigraph = delete_all_singletons(multigraph)
+    # gm.clean_graph_from_source_and_sink(multigraph)
+    nx.write_graphml(multigraph, workdir + name + '_multigraph.graphml')
+
+
+def create_multigraph_problem_simulator(ovl_graph_file, links_graph_file, workdir):
+    ovl_graph = nx.read_graphml(ovl_graph_file)
+    links_graph = nx.read_graphml(links_graph_file)
+
+    multigraph = nx.MultiDiGraph()
+
+    add_nodes_and_overlaps_to_multigraph(multigraph, ovl_graph)
+    add_links_to_multigraph(multigraph, links_graph)
+    name = os.path.basename(ovl_graph_file).split('_')[0]
+    print("MultiGraph creation :")
+    print(workdir + name + '_multigraph.graphml')
+    # multigraph = delete_all_singletons(multigraph)
+    # gm.clean_graph_from_source_and_sink(multigraph)
+    nx.write_graphml(multigraph, workdir + name + '_multigraph.graphml')
+    return multigraph
+
+def diGraphToMultiDiGraph(mg_graph):
+    if mg_graph.is_multigraph():
+        return mg_graph
+    else:
+        multigraph_mg_graph = nx.MultiDiGraph()
+        for node in mg_graph.nodes():
+            multigraph_mg_graph.add_node(node, UnitigLength=mg_graph.node[node]['UnitigLength'],
+                                         BigUnitig=mg_graph.node[node]['BigUnitig'])
+        for (u, v) in mg_graph.edges():
+            multigraph_mg_graph.add_edge(u, v, Distance=mg_graph.edge[u][v]['Distance'], Type="overlaps")
+        return multigraph_mg_graph
+
+
+def build_DCEP_multigraph(mg_graph):
+    mg_graph = diGraphToMultiDiGraph(mg_graph)
+    multigraph_DCEP = nx.MultiDiGraph()
+    for node in mg_graph.nodes():
+        multigraph_DCEP.add_node(node, BigUnitig=mg_graph.node[node]['BigUnitig'])
+    for (u, v, k) in mg_graph.edges(keys=True):
+        if mg_graph.edge[u][v][k]['Type'] == 'overlaps':
+            multigraph_DCEP.add_edge(u, v,
+                                     Distance=mg_graph.edge[u][v][k]['Distance'] + mg_graph.node[u]['UnitigLength'],
+                                     Type="overlaps")
+        elif mg_graph.edge[u][v][k]['Type'] == 'links':
+            multigraph_DCEP.add_edge(u, v,
+                                     Distance=mg_graph.edge[u][v][k]['Distance'] + mg_graph.node[u]['UnitigLength'],
+                                     Distance_min=mg_graph.edge[u][v][k]['Distance_min'] + mg_graph.node[u][
+                                         'UnitigLength'],
+                                     Distance_max=mg_graph.edge[u][v][k]['Distance_max'] + mg_graph.node[u][
+                                         'UnitigLength'], Type="links")
+    return multigraph_DCEP
+
+
+def make_dico_node(mg_graph):
+    dico_nodes = {}
+    for node in mg_graph.nodes():
+        dico_nodes[node] = mg_graph.node[node]['UnitigLength']
+    return dico_nodes
 
 
 if __name__ == '__main__':

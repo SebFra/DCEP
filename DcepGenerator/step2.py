@@ -191,6 +191,14 @@ def generationFilesStep2(fileStep1, insertSize, kmerSize, probInsert, circular, 
     cv.graph_ml_to_data(graph_file_overlaps, graph_file_links, name)
     cv.graph_ml_to_data_solution(Solution, circular, graph_file_overlaps, graph_file_links, name)
     writeSolutionReport(Solution, Links_Solution, name, workdir)
+    multigraph = gm.create_multigraph_problem_simulator(graph_file_overlaps, graph_file_links, workdir)
+
+    dico_nodes = gm.make_dico_node(multigraph)
+
+    multigraph_DCEP = gm.build_DCEP_multigraph(multigraph)
+    nx.write_graphml(multigraph_DCEP, workdir+'/Graphes/Problem/' + name + '_DCEP_multigraph.graphml')
+    workdir = workdir+'/Graphes/Problem'
+    cv.multigraph_DCEP_to_dat(multigraph_DCEP, workdir, name, dico_nodes)
     exit()
 
 
