@@ -5,8 +5,8 @@ import argparse
 import random
 import networkx as nx
 import os
-import convertisseur as cv
-import GraphMaker as gm
+import DcepGenerator.convertisseur as cv
+import DcepGenerator.GraphMaker as gm
 from statistics import mean
 
 
