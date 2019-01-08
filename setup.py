@@ -6,6 +6,7 @@ setup(
     packages=['DcepGenerator'],
     keywords='generator dcep ctw2018',
     url='https://github.com/SebFra/DCEP.git',
+    scripts=['DcepGenerator/ProblemGenerator.py', 'DcepGenerator/UnitigsGenerator.py'],
     license='GPLv3',
     author='Sebastien François',
     author_email='sebastien.francois@inria.fr',
