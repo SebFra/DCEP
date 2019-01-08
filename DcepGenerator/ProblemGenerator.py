@@ -25,7 +25,6 @@ def buildSolution(copyCount):
 def buildOverlapsFromSolution(pathSolution, circular):
     overlaps = list(zip(pathSolution, pathSolution[1:]))
     if circular:
-        print("DEBUG : ", pathSolution)
         overlaps.append((pathSolution[-1], pathSolution[0]))
     return overlaps
 
@@ -42,9 +41,6 @@ def MarkFlowForDistanceComputation(kmer_size, pathSolution):
         start_position = end_position - kmer_size + 1
         indexStart = indexStart + 1
 
-    print("Solution : ", pathSolution)
-    for index in position_dict:
-        print("Node : " + pathSolution[index] + " position : " + str(position_dict[index]))
     return position_dict
 
 
@@ -57,21 +53,12 @@ def buildLinksFromSolution(kmerSize, insertSize, Solution, probInsert, circular,
     for i in range(0, len(Solution)):
         graph_solution.node[i]['unitig'] = Solution[i]
         graph_solution.node[i]['size'] = int(Solution[i].split('__')[2].split('_')[0])
-    print(graph_solution.nodes())
-    print("nb nodes dans le graph : ", len(graph_solution.nodes()))
-    print("nb nodes dans la solution : ", len(Solution))
 
     for i in Solution:
-        print("Candidate : ", i)
-        print("Solution: ", Solution)
-        print("position_dict : ", position_dict)
         neighbourhood = set([j for j in range(index, len(Solution), 1) if
                              j != index and insertSize - int(Solution[j].split('__')[2].split('_')[0]) - int(
                                  Solution[index].split('__')[2].split('_')[0]) <= position_dict[j][0] -
                              position_dict[index][1] <= insertSize])
-        print("neighbourhood : ", neighbourhood)
-        print("neighbourhood distances: ",
-              [(Solution[u], position_dict[u][0] - position_dict[index][1]) for u in neighbourhood])
         for u in neighbourhood:
             randomNumber = random.randint(0, 100)
             if randomNumber / 100 <= probInsert:
@@ -83,8 +70,6 @@ def buildLinksFromSolution(kmerSize, insertSize, Solution, probInsert, circular,
                 graph_solution.add_edge(index, u, Type='Links', Distance=distance)
         index = index + 1
 
-    print("LINKS : ", DicoLinks)
-    print("Solution : ", Solution)
     solutionIndex = range(0, len(Solution), 1)
     overlaps = list(zip(solutionIndex, solutionIndex[1:]))
     print(overlaps)
@@ -109,9 +94,6 @@ def generateLinksForStep(Links_Solution, kmerSize):
         elif maxDistance <= 0:
             maxDistance = 0
         ListLinks.append((i, j, (int(minDistance), int(maxDistance))))
-    print("*****************************************")
-    print(ListLinks)
-    print("*****************************************")
     return ListLinks
 
 
@@ -126,7 +108,6 @@ def generateOverlapsForStep(Solution, position_dict, kmerSize, circular):
                     unitig_j = Solution[j]
                     if (unitig_i, unitig_j) not in overlaps or distance <= overlaps[unitig_i, unitig_j]:
                         overlaps[unitig_i, unitig_j] = distance
-    print("overlaps simples : ", overlaps)
     if circular:
         overlaps[((Solution[-1], Solution[0]))] = -(kmerSize - 1)
     return overlaps
@@ -148,20 +129,21 @@ def writeStepFile(copyCount, Overlaps, Links, name, workdir):
             file.write(u + "  " + v + "  " + str(w[0]) + "  " + str(w[1]) + "\n")
     return workdir + '/' + name + ".step"
 
+
 def writeSolutionReport(Solution, dicoLinksSolution, name, workdir):
     with open(workdir + '/' + name + "_solution.report", "w") as file:
-        file.write('Solution of '+name+'\n')
-        file.write('Nb links to satisfied : '+str(len(dicoLinksSolution))+"\n")
+        file.write('Solution of ' + name + '\n')
+        file.write('Nb links to satisfied : ' + str(len(dicoLinksSolution)) + "\n")
         file.write("*********************************************************\n")
         file.write("LINKS :\n")
-        for (u,v) in dicoLinksSolution:
-            list_distances = dicoLinksSolution[(u,v)]
+        for (u, v) in dicoLinksSolution:
+            list_distances = dicoLinksSolution[(u, v)]
             for distance in list_distances:
                 file.write(u + '\t' + v + '\t' + str(distance) + '\n')
         file.write("*********************************************************\n")
         file.write("Solution :\n")
         for u in Solution:
-            file.write(u+'\n')
+            file.write(u + '\n')
 
 
 def generationFilesStep2(fileStep1, insertSize, kmerSize, probInsert, circular, name, workdir):
@@ -179,25 +161,24 @@ def generationFilesStep2(fileStep1, insertSize, kmerSize, probInsert, circular, 
                                                                            workdir)
     nx.write_graphml(graph_solution, workdir + '/' + name + '_solutionLinks.graphml')
     Links = generateLinksForStep(Links_Solution, kmerSize)
-    print("Solution : ", Solution)
-    print("Overlaps : ", Overlaps)
-    print("Links : ", Links)
     Overlaps = generateOverlapsForStep(Solution, position_dict, kmerSize, circular)
     step_filename = writeStepFile(copyCount, Overlaps, Links, name, workdir)
-    print("GENERATION DES GRAPHES")
-    graph_file_overlaps, graph_file_links = gm.create_graphs_problem_from_step(step_filename, name)
 
-    print("GENERATION DU DAT")
+    graph_file_overlaps, graph_file_links = gm.create_graphs_problem_from_step(step_filename, name)
+    print("GRAPHES GENERATION : DONE")
+    print("***************************************************")
     cv.graph_ml_to_data(graph_file_overlaps, graph_file_links, name)
     cv.graph_ml_to_data_solution(Solution, circular, graph_file_overlaps, graph_file_links, name)
+    print("DAT GENERATION : DONE")
+    print("***************************************************")
     writeSolutionReport(Solution, Links_Solution, name, workdir)
     multigraph = gm.create_multigraph_problem_simulator(graph_file_overlaps, graph_file_links, workdir)
 
     dico_nodes = gm.make_dico_node(multigraph)
 
     multigraph_DCEP = gm.build_DCEP_multigraph(multigraph)
-    nx.write_graphml(multigraph_DCEP, workdir+'/Graphes/Problem/' + name + '_DCEP_multigraph.graphml')
-    workdir = workdir+'/Graphes/Problem'
+    nx.write_graphml(multigraph_DCEP, workdir + '/Graphes/Problem/' + name + '_DCEP_multigraph.graphml')
+    workdir = workdir + '/Graphes/Problem'
     cv.multigraph_DCEP_to_dat(multigraph_DCEP, workdir, name, dico_nodes)
     exit()
 

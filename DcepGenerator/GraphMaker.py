@@ -57,20 +57,18 @@ def compressToMetaDiGraph(multiDiGraph, list_scaffolds):
     for scaffold in list_scaffolds:
         if len(scaffold) > 1:
             first_node = scaffold[0]
-            print("DEBUG", first_node)
+
             for node in scaffold[1:]:
                 multiDiGraph_copy_temp = multiDiGraph_copy.copy()
                 multiDiGraph_copy = contracted_nodes(multiDiGraph_copy_temp, first_node, node, self_loops=False)
-                print("CONTRACT : ", first_node, node)
-                print(multiDiGraph_copy.node[first_node])
+
             multiDiGraph_copy = nx.relabel_nodes(multiDiGraph_copy, {first_node: "S" + str(compteur_scaffold) + 'F'})
             scaffold_reversed_complemented = get_reverse_from_scaffold(scaffold)
             first_node = scaffold_reversed_complemented[0]
             for node in scaffold_reversed_complemented[1:]:
                 multiDiGraph_copy_temp = multiDiGraph_copy.copy()
                 multiDiGraph_copy = contracted_nodes(multiDiGraph_copy_temp, first_node, node, self_loops=False)
-                print("CONTRACT : ", first_node, node)
-                print(multiDiGraph_copy.node[first_node])
+
             multiDiGraph_copy = nx.relabel_nodes(multiDiGraph_copy, {first_node: "S" + str(compteur_scaffold) + 'R'})
         compteur_scaffold += 1
     return multiDiGraph_copy
@@ -82,13 +80,9 @@ def compressToMetaGraph(multiDiGraph, list_scaffolds):
     for scaffold in list_scaffolds:
         if len(scaffold) > 1:
             first_node = scaffold[0]
-            print("DEBUG", first_node)
             for node in scaffold[1:]:
                 multiDiGraph_copy_temp = multiDiGraph_copy.copy()
                 multiDiGraph_copy = contracted_nodes(multiDiGraph_copy_temp, first_node, node, self_loops=False)
-                print("CONTRACT : ", first_node, node)
-                print(multiDiGraph_copy.node[first_node])
-        print("ICI", multiDiGraph_copy.edges())
         multiDiGraph_copy = nx.relabel_nodes(multiDiGraph_copy, {first_node: "S" + str(compteur_scaffold) + 'F'})
         compteur_scaffold += 1
     return multiDiGraph_copy
@@ -127,7 +121,7 @@ def delete_all_nodes_smaller_than(graph_ml, kmer_size, overlaps_min):
     for node in graph.nodes():
         if graph.node[node]['UnitigLength'] < 2 * kmer_size - overlaps_min:
             list_nodes_to_remove.append(node)
-    print("Unitigs retirés : ", list_nodes_to_remove)
+
     graph.remove_nodes_from(list_nodes_to_remove)
     file = os.path.basename(graph_ml)
     name = file.split('.')[0]
@@ -144,7 +138,7 @@ def delete_all_nodes_smaller_than_size(graph_ml, size_min):
     for node in graph.nodes():
         if graph.node[node]['UnitigLength'] < size_min:
             list_nodes_to_remove.append(node)
-    print("Unitigs retirés : ", list_nodes_to_remove)
+
     graph.remove_nodes_from(list_nodes_to_remove)
     file = os.path.basename(graph_ml)
     name = file.split('.')[0]
@@ -228,18 +222,7 @@ def map_to_graphml_with_mp(file_map, pb_file, workdir):
     G.remove_nodes_from(nodes_to_remove)
     overlaps = [(source, sink) for (source, sink) in graph_pb.edges() if graph_pb.edge[source][sink]['Distance'] < 0]
     edges_to_remove = [(source, sink) for (source, sink) in overlaps if (source, sink) not in list_edges]
-    print("Edges de base : ")
-    print(overlaps)
-    print("---------------------------")
-    print("Edges to remove : ")
-    print(edges_to_remove)
-    print("---------------------------")
-    print("Edges restant : ")
-    print([(source, sink) for (source, sink) in overlaps if (source, sink) not in edges_to_remove])
-    print("---------------------------")
-    print("List edges")
-    print(list_edges)
-    print(len(list_edges))
+
     G.remove_edges_from(edges_to_remove)
 
     list_good_links = [(source, sink) for (source, sink) in G.edges() if
@@ -326,18 +309,14 @@ def create_graphs_problem_from_step(file_step, name_subject):
     if not os.path.isdir(workdir):
         os.system("mkdir " + workdir)
 
-    print(workdir)
-
     Nodes, Overlaps, Links = parser.parse_file_with_edges_division(file_step)
-    print("Nodes : ", Nodes)
-    print("Overlaps : ", Overlaps)
-    print("Links : ", Links)
+
     if not Links:
         longest_link = 0
     else:
         longest_link = max([edge.distance_max() for edge in Links])
     OverlapsGraph = create_graph_for_model(Nodes, Overlaps, longest_link)
-    OverlapsGraph = clean_graph_from_source_and_sink(OverlapsGraph)
+    #OverlapsGraph = clean_graph_from_source_and_sink(OverlapsGraph)
     OverlapsGraph = delete_singletons(OverlapsGraph)
     graph_file_overlaps = graph_to_graphml(OverlapsGraph, workdir, name_subject + '_overlaps')
     LinksGraph = create_graph_for_model(Nodes, Links, longest_link)
@@ -395,8 +374,7 @@ def multiply_nodes(nodes):
             dico_nodes_oriented[node_index_str + "R"].append(str(node.get_index()) + "_" + str(i) + "_" + "R")
             list_nodes_for_graph.append(node_index_str + "_" + str(i) + "_" + "R")
             dico_nodes_length[node_index_str + "_" + str(i) + "_" + "R"] = node.get_size_total()
-    print("dico_nodes : ", dico_nodes_oriented)
-    print("list_nodes : ", list_nodes_for_graph)
+
     return dico_nodes_oriented, list_nodes_for_graph, dico_nodes_length
 
 
@@ -460,16 +438,15 @@ def map_to_graph(map_name, workdir, name, graph_problem_initial):
         List_line.append(split[3].split('__')[0] + '__' + orientation)
         List_number_unitig.append(split[3].split('__')[0])
         line = file_map.readline()
-    print("LIST LINE : ", List_line)
-    print("LIST NUMBER = ", List_number_unitig)
+
     unitigs_begin_end = List_line[0]
     unitigs_without_begin_end = List_line[1:-1]
     unitigs_occurence = {k: List_number_unitig.count(k) for k in set(List_number_unitig)}
-    print("OCC AVANT : ", unitigs_occurence)
+
     list_number_unitig_unique = [unitig_number for unitig_number in unitigs_occurence if
                                  unitigs_occurence[unitig_number] == 1]
     list_unitig_solution_forward = []
-    print("ATTENTION : ", unitigs_without_begin_end)
+
     for unitig in unitigs_without_begin_end:
         unitig_split = unitig.split('__')
         if unitig.split('__')[0] == unitigs_begin_end.split('__')[0]:
@@ -480,9 +457,7 @@ def map_to_graph(map_name, workdir, name, graph_problem_initial):
             list_unitig_solution_forward.append(
                 unitig_split[0] + '_' + str(unitigs_occurence[unitig.split('__')[0]] - 1) + '_' + unitig_split[1])
             unitigs_occurence[unitig.split('__')[0]] -= 1
-    print("LISTE UNITIGS = ", list_unitig_solution_forward)
-    print("OCC APRES : ", unitigs_occurence)
-    print("UNITIGS BEGIN END : ", unitigs_begin_end)
+
     unitigs_begin_end_split = unitigs_begin_end.split('__')
     unitigs_begin_end = unitigs_begin_end_split[0] + '_' + str(
         unitigs_occurence[unitigs_begin_end.split('__')[0]] - 1) + '_' + \
@@ -490,8 +465,7 @@ def map_to_graph(map_name, workdir, name, graph_problem_initial):
     list_unitig_solution_forward = [unitigs_begin_end] + list_unitig_solution_forward + [unitigs_begin_end]
     list_unitig_solution_reverse = [get_reverse(node) for node in list_unitig_solution_forward]
     list_unitig_solution_reverse.reverse()
-    print("list_unitig_solution_forward : ", list_unitig_solution_forward)
-    print("list_unitig_solution_reverse : ", list_unitig_solution_reverse)
+
 
     list_edges_solution_forward = []
     iter_list = iter(list_unitig_solution_forward)
@@ -500,7 +474,7 @@ def map_to_graph(map_name, workdir, name, graph_problem_initial):
         sink = next(iter_list)
         list_edges_solution_forward.append((source, sink))
         source = sink
-    print("list_edges_solution_forward : ", list_edges_solution_forward)
+
     list_edges_solution_reverse = []
     iter_list = iter(list_unitig_solution_reverse)
     source = next(iter_list)
@@ -508,30 +482,22 @@ def map_to_graph(map_name, workdir, name, graph_problem_initial):
         sink = next(iter_list)
         list_edges_solution_reverse.append((source, sink))
         source = sink
-    print("list_edges_solution_reverse : ", list_edges_solution_reverse)
 
     for (source, sink) in graph_problem_initial.edges():
         if (source, sink) not in list_edges_solution_forward:
-            print("FORWARD edge : JE RETIRE ", source, sink)
             Graphe_forward.remove_edge(source, sink)
         if (source, sink) not in list_edges_solution_reverse:
-            print("reverse edge : JE RETIRE ", source, sink)
             Graphe_reverse.remove_edge(source, sink)
 
     for node in graph_problem_initial.nodes():
         if node not in list_unitig_solution_forward:
-            print("FORWARD node : JE RETIRE : ", node)
             Graphe_forward.remove_node(node)
         if node not in list_unitig_solution_reverse:
-            print("reverse node : JE RETIRE : ", node)
             Graphe_reverse.remove_node(node)
     print(unitigs_occurence)
     first_unique_unitig = [node for node in list_unitig_solution_forward if
                            node.split('_')[0] in list_number_unitig_unique]
     first_unique_unitig = [node for node in first_unique_unitig if graph_problem_initial.node[node]["BigUnitig"]][0]
-    print("FIRST UNIQUE : ", first_unique_unitig)
-    print("Graphe forward nodes : ", Graphe_forward.edges())
-    print("Graphe reverse nodes : ", Graphe_reverse.edges())
 
     graph_to_graphml(Graphe_forward, workdir, name + "_forward")
     graph_to_graphml(Graphe_reverse, workdir, name + "_reverse")
@@ -540,17 +506,11 @@ def map_to_graph(map_name, workdir, name, graph_problem_initial):
 
 
 def complete_graph_with(nodes, edges, graphe_solution, graphe_global):
-    print("****************************************")
-    print("NODES : ", nodes)
-    print("EDGES : ", edges)
-    print('GRAPH SOLUTION NODES : ', graphe_solution.nodes())
-    print('GRAPH SOLUTION EDGES : ', graphe_solution.edges())
     for node in nodes:
         if node not in graphe_solution.nodes():
             UnitLength = graphe_global.node[node]['UnitigLength']
             graphe_solution.add_node(node, UnitigLength=UnitLength, BigUnitig=graphe_global.node[node]['BigUnitig'],
                                      Fusion=False)
-    print("NODE AFTER ADD : ", graphe_solution.nodes())
 
     for (source, sink) in edges:
         if (source, sink) in graphe_global.edges():
@@ -561,7 +521,6 @@ def complete_graph_with(nodes, edges, graphe_solution, graphe_global):
 
 
 def get_edges_used_from_solution(solution):
-    print("SOLUTION : ", solution)
     edges_used = []
     for element in solution:
         if "e_" in element:
@@ -614,13 +573,12 @@ def save_solution_step1_unique(list_solutions, graphe_problem, workdir, name_sub
         else:
             G.add_node(str(node), UnitigLength=graphe_problem.node[node]['UnitigLength'],
                        BigUnitig=graphe_problem.node[node]['BigUnitig'], Fusion=False)
-    print("---------------------------------------------")
-    print("Solution EDGES USED")
+
     for (source, sink) in edges:
         G.add_edge(source, sink, Distance=graphe_problem.edge[source][sink]['Distance'],
                    Distance_min=graphe_problem.edge[source][sink]['Distance_min'],
                    Distance_max=graphe_problem.edge[source][sink]['Distance_max'])
-    print("---------------------------------------------")
+
     graph_to_graphml(G, workdir, name_subject + "_step1_solution" + str(number_solution))
     return G
 
@@ -632,13 +590,10 @@ def save_solution_step1(list_solutions, graphe_problem, workdir, name_subject):
         nodes, edges = split_solution_step1(solution)
         for node in nodes:
             G.add_node(str(node), UnitigLength=graphe_problem.node[node]['UnitigLength'], BigUnitig=True, Fusion=False)
-        print("---------------------------------------------")
-        print("Solution EDGES USED")
         for (source, sink) in edges:
             G.add_edge(source, sink, Distance=graphe_problem.edge[source][sink]['Distance'],
                        Distance_min=graphe_problem.edge[source][sink]['Distance_min'],
                        Distance_max=graphe_problem.edge[source][sink]['Distance_max'])
-        print("---------------------------------------------")
         graph_to_graphml(G, workdir, name_subject + "_step1_solution" + str(number_solution))
         number_solution += 1
 
@@ -668,22 +623,16 @@ def create_graph_step1_with_split_nodes(workdir, graph_problem, node_to_split, f
 
 
 def create_graph_global(graph_solution_pred, graph_problem, list_source_sink_holes):
-    print(graph_problem.nodes())
     for node in graph_solution_pred:
         reverse_node = get_reverse(node)
         if node not in list_source_sink_holes and node in graph_problem:
-            print("remove node : ", node)
             graph_problem.remove_node(node)
         if reverse_node in graph_problem.nodes():
-            print("remove reverse : ", reverse_node)
             graph_problem.remove_node(reverse_node)
-    print(graph_problem.nodes())
 
 
 def get_weakly_connected_component(graph):
     test = list(nx.weakly_connected_components(graph))
-    print(test)
-    print(len(test))
     return test, len(test)
 
 
@@ -697,8 +646,6 @@ def get_path_from_source_to_sink(graph, source, sink):
 
 
 def get_path_from_source_to_sink_2(graph, source, sink):
-    print("source : ", source)
-    print("sink : ", sink)
     list_path = list(nx.all_simple_paths(graph, source, sink))
     if not list_path:
         return [[source]]
@@ -763,26 +710,23 @@ def create_multigraph_problem(ovl_graph_file, links_graph_file, workdir):
     add_nodes_and_overlaps_to_multigraph(multigraph, ovl_graph)
     add_links_to_multigraph(multigraph, links_graph)
     name = os.path.basename(ovl_graph_file).split('_')[0]
-    print("MultiGraph creation :")
-    print(workdir + name + '_multigraph.graphml')
     # multigraph = delete_all_singletons(multigraph)
     # gm.clean_graph_from_source_and_sink(multigraph)
-    nx.write_graphml(multigraph, workdir + name + '_multigraph.graphml')
+    nx.write_graphml(multigraph, workdir+'/' + name + '_multigraph.graphml')
 
 
 def create_multigraph_problem_simulator(ovl_graph_file, links_graph_file, workdir):
+    name = os.path.basename(ovl_graph_file).split('_')[0]
     ovl_graph = nx.read_graphml(ovl_graph_file)
     links_graph = nx.read_graphml(links_graph_file)
 
     multigraph = nx.MultiDiGraph()
-
+    nx.write_graphml(ovl_graph, workdir +'/' + name + '_debugOverlaps.graphml')
     add_nodes_and_overlaps_to_multigraph(multigraph, ovl_graph)
     add_links_to_multigraph(multigraph, links_graph)
-    name = os.path.basename(ovl_graph_file).split('_')[0]
+
     print("MultiGraph creation :")
     print(workdir + name + '_multigraph.graphml')
-    # multigraph = delete_all_singletons(multigraph)
-    # gm.clean_graph_from_source_and_sink(multigraph)
     nx.write_graphml(multigraph, workdir + name + '_multigraph.graphml')
     return multigraph
 

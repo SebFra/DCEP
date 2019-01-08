@@ -19,8 +19,6 @@ def write_id_last_block(file, list_constraints_LR):
 
 
 def write_LR(file, list_constraints_LR):
-    print(list_constraints_LR)
-    print(list_constraints_LR[0])
     set_id_read = set([block[1] for block in list_constraints_LR])
     list_id_read = list(set_id_read)
     list_id_read = sorted(list_id_read, key=lambda x: int(x))
@@ -370,7 +368,6 @@ def graph_ml_sol_to_data(graph, name):
 
 def graph_ml_fantom_to_data(graph_file_overlaps, graph_file_links, name):
     workdir = os.path.dirname(os.path.abspath(str(graph_file_overlaps)))
-    print(workdir, name)
     name_for_data_file = workdir + '/' + name + '.dat'
     graph_overlaps = nx.read_graphml(graph_file_overlaps)
     graph_links = nx.read_graphml(graph_file_links)
@@ -412,7 +409,7 @@ def write_T_links_compatible(file, list_links, nodes):
         for predecessor in list_preds:
             if len([u for u in done_preds if is_a_repetition(u, predecessor)]) == 0:
                 list_repeated_preds = [u for u in list_preds if is_a_repetition(u, predecessor)]
-                print("Test : ", predecessor, list_repeated_preds)
+
                 if len(list_repeated_preds) >= 2:
                     for u in list_repeated_preds:
                         file.write(str(cpt_bloc) + '\t' + str(u) + '\t' + str(node))
@@ -424,7 +421,7 @@ def write_T_links_compatible(file, list_links, nodes):
         for successor in list_succs:
             if len([u for u in done_succs if is_a_repetition(u, successor)]) == 0:
                 list_repeated_succs = [u for u in list_succs if is_a_repetition(u, successor)]
-                print("Test : ", successor, list_repeated_succs)
+
                 if len(list_repeated_succs) >= 2:
                     for u in list_repeated_succs:
                         file.write(str(cpt_bloc) + '\t' + str(node) + '\t' + str(u))
@@ -443,7 +440,6 @@ def write_cpt_bloc_in_file(file, cpt_bloc):
 
 def graph_ml_to_data(graph_file_overlaps, graph_file_links, name):
     workdir = os.path.dirname(os.path.abspath(str(graph_file_overlaps)))
-    print(workdir, name)
     name_for_data_file = workdir + '/' + name + '.dat'
     graph_overlaps = nx.read_graphml(graph_file_overlaps)
     graph_links = nx.read_graphml(graph_file_links)
@@ -518,7 +514,6 @@ def sol_to_dat_for_contig_generation(list_unitigs_solution, list_edges_solution,
                                      setAdj_twoSided, setFree, setReversibleSymetric, set_links_closed,
                                      set_links_closed_occurence_decision, dico_distances_satisfied, dico_overlaps, name,
                                      workdir):
-    print(workdir, name)
     name_for_data_file = workdir + '/' + name + '_for_contig_generation.dat'
     with open(name_for_data_file, "w") as file:
         file.write("data;\n")
@@ -539,7 +534,6 @@ def sol_to_dat_for_contig_generation(list_unitigs_solution, list_edges_solution,
 
 def simple_sol_to_dat_for_contig_generation(list_unitigs_solution, list_edges_solution, setReversibleSymetric, set_links_closed, dico_distances_satisfied, dico_overlaps, name,
                                      workdir):
-    print(workdir, name)
     name_for_data_file = workdir + '/' + name + '_for_contig_generation.dat'
     with open(name_for_data_file, "w") as file:
         file.write("data;\n")
@@ -556,7 +550,7 @@ def simple_sol_to_dat_for_contig_generation(list_unitigs_solution, list_edges_so
 
 def LR_graph_ml_to_data(graph_overlaps, graph_file_overlaps, list_constraints_LR, name):
     workdir = os.path.dirname(os.path.abspath(str(graph_file_overlaps)))
-    print(workdir, name)
+
     name_for_data_file = workdir + '/' + name + '_LR' + '.dat'
     nodes = graph_overlaps.nodes()
     list_overlaps = [(source, sink) for (source, sink) in graph_overlaps.edges()]
@@ -715,7 +709,7 @@ def build_digraph_from_data_frame(dataframe):
     nodes = set()
     edges = set()
     graph = nx.DiGraph()
-    print(dataframe)
+
     for i, row in dataframe.iterrows():
         source = row['source']
         sink = row['sink']
@@ -745,13 +739,6 @@ def csv_to_solution(graph_problem, df_solution_nodes, df_solution_edges, df_solu
             name = row['unitig']
             graph_solution.add_node(name, {'BigUnitig': graph_problem.node[name]['BigUnitig'],
                                            'UnitigLength': graph_problem.node[name]['UnitigLength']})
-            # else:
-            #     print("DEBUG")
-            #     print(row)
-            #     if row['intermediaire'] >= 1:
-            #         name = row['unitig']
-            #         graph_solution.add_node(name, {'BigUnitig': graph_problem.node[name]['BigUnitig'],
-            #                                        'UnitigLength': graph_problem.node[name]['UnitigLength']})
 
     for i, row in df_solution_edges.iterrows():
         if row['used'] == 1:
@@ -797,23 +784,17 @@ def workflow_after_ampl(graph_problem, df_solution_edges, df_solution_nodes, df_
 
 
 def convert_sol_to_graphml(problemGraphml, solutionCsvNodes, solutionCsvEdges, solutionCsvHoles, name_type):
-    print(problemGraphml)
+
     name = problemGraphml.split('.')[0].split('/')[-1]
     name = name + '_' + name_type
     workdir = os.path.dirname(os.path.abspath(problemGraphml))
 
-    print("Name : " + name)
-    print("Wordir : " + workdir)
+
 
     df_solution_edges = pd.read_csv(os.path.abspath(solutionCsvEdges))
     df_solution_nodes = pd.read_csv(os.path.abspath(solutionCsvNodes))
     df_solution_holes = pd.read_csv(os.path.abspath(solutionCsvHoles))
 
-    print(df_solution_nodes)
-
-    print(df_solution_edges)
-
-    print(df_solution_holes)
 
     graph_problem = nx.read_graphml(problemGraphml)
 
@@ -958,13 +939,11 @@ def graph_ml_to_data_solution(Solution, circular, graph_file_overlaps, graph_fil
         u_occ = str(u_number)+'_'+str(nbOcc[u_number])+'_'+u_orientation
         nbOcc[u_number] = nbOcc[u_number] + 1
         SolutionOcc.append(u_occ)
-    print("Solution : ", Solution)
-    print("SolutionOcc : ", SolutionOcc)
+
     overlaps_solution = list(zip(SolutionOcc, SolutionOcc[1:]))
     if circular:
         overlaps_solution.append((SolutionOcc[-1], SolutionOcc[0]))
-    print("overlaps_solution : ", overlaps_solution)
-    print(workdir, name)
+
     name_for_data_file = workdir + '/' + name + 'pathSolutionFixed.dat'
     graph_overlaps = nx.read_graphml(graph_file_overlaps)
     edges_to_remove = [(u,v) for (u,v) in graph_overlaps.edges() if (u,v) not in overlaps_solution]
@@ -1001,25 +980,13 @@ if __name__ == '__main__':
     solutionCsvHoles = str(sys.argv[4])
     name_type = str(sys.argv[5])
 
-    print(problemGraphml)
-    print(solutionCsvNodes)
-    print(solutionCsvEdges)
-    print(solutionCsvHoles)
-
     name = problemGraphml.split('.')[0]
     name = name + '_' + name_type
     workdir = os.path.dirname(os.path.abspath(problemGraphml))
 
-    print("Name : " + name)
-    print("Wordir : " + workdir)
-
     df_solution_edges = pd.read_csv(os.path.abspath(solutionCsvEdges))
     df_solution_nodes = pd.read_csv(os.path.abspath(solutionCsvNodes))
     df_solution_holes = pd.read_csv(os.path.abspath(solutionCsvHoles))
-
-    print(df_solution_nodes)
-    print(df_solution_edges)
-    print(df_solution_holes)
 
     graph_problem = nx.read_graphml(sys.argv[1])
 
