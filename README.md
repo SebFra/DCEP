@@ -6,7 +6,8 @@ This simulator is a tool to produce instances of this problem similar of the one
 
 ## Usage
 There are two main steps to produce an instance of the DCEP problem :
-*First we need to produce the non-oriented unitigs :
+
+#First we need to produce the non-oriented unitigs :
 ```sh
 UnitigsGenerator.py -Nnr 2 -Nr 4 -MaxR 3
 ```
@@ -41,7 +42,7 @@ Example :
 
 How to read it ? For the first line : "The unitig 1 has a length of 5598 characters and appeared only once in the solution".
 
-*Distances, problem and solution generation
+# Last : Distances, problem and solution generation
 ```sh
 ProblemGenerator.py -s1 NO_NAME_step1.txt -kmer 101 -n testClassicSmall
 
