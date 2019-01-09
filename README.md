@@ -60,7 +60,7 @@ ProblemGenerator.py -s1 NO_NAME_step1.txt -kmer 101 -n testClassicSmall
 ### Required
 * -u : unitigs file (generated with UnitigsGenerator.py)
 * -n : name of the problem generated
-* -kmer : overlaps maximum = kmer - 1, must be superior to the smallest unitig.
+* -kmer : overlaps maximum = kmer - 1, must be superior to the size of the smallest unitig.
 
 The non repeated unitig will appear only once in the solution.
 The repeated unitig will appear between two and MaxR in the solution.
