@@ -1,4 +1,14 @@
-## Introduction
+# Installation
+Two commands :
+```sh
+python3 setup.py build
+```
+```sh
+python3 setup.py install
+```
+And it's done ;)
+
+# Introduction
 The DCEP problem (for Distance Constraint elementary path) has been presented for the first time during the CTW 2018.
 The problem consists to find a path that'll satisfy the maximum number of distances in a given Set.
 Initially it's coming from the need to solve simultaneously two well known NP-Complet genomic problem called scaffolding and gap-filling.
@@ -13,8 +23,8 @@ UnitigsGenerator.py -Nnr 2 -Nr 4 -MaxR 3
 ```
 
 ### Required
-*-Nnr : number of non repeated unitig
-*-Nr : number of repeated unitig
+* -Nnr : number of non repeated unitig
+* -Nr : number of repeated unitig
 
 The non repeated unitig will appear only once in the solution.
 The repeated unitig will appear between two and MaxR in the solution.
