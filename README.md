@@ -7,9 +7,10 @@ This simulator is a tool to produce instances of this problem similar of the one
 ## Usage
 There are two main steps to produce an instance of the DCEP problem :
 *First we need to produce the non-oriented unitigs :
-'''
+```sh
 UnitigsGenerator.py -Nnr 2 -Nr 4 -MaxR 3
-'''
+```
+
 ### Required
 *-Nnr : number of non repeated unitig
 *-Nr : number of repeated unitig
@@ -41,10 +42,10 @@ Example :
 How to read it ? For the first line : "The unitig 1 has a length of 5598 characters and appeared only once in the solution".
 
 *Distances, problem and solution generation
-'''
+```sh
 ProblemGenerator.py -s1 NO_NAME_step1.txt -kmer 101 -n testClassicSmall
 
-'''
+```
 ### Required
 *-u : unitigs file (generated with UnitigsGenerator.py)
 *-n : name of the problem generated
@@ -61,7 +62,7 @@ The repeated unitig will appear between two and MaxR in the solution.
 ### OUTPUT
 The solution of the instance is in the name_solution.report file (use any text editor to read it).
 Example :
-'''
+```
 Solution of testClassicSmall
 Nb links to satisfied : 8
 *********************************************************
@@ -87,7 +88,7 @@ Solution :
 4__len__145_R
 6__len__160_R
 5__len__160_R
-'''
+```
 
 A file name_solutionLinks.graphml that contains the graph of the solution. You can use cytoscape to read it.
 
