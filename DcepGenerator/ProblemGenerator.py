@@ -192,8 +192,8 @@ def restricted_probability(x):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Distances and solution simulator')
-    parser.add_argument('-s1', "--step1",
-                        help="step1 file", required=True, type=str)
+    parser.add_argument('-u', "--unitigs",
+                        help="unitigs file", required=True, type=str)
     parser.add_argument('-n', "--name",
                         help="name for the step 2 file", required=True, type=str)
     parser.add_argument('-i', "--insert",
@@ -205,6 +205,6 @@ if __name__ == '__main__':
     parser.add_argument('-c', "--circular",
                         help="If genome is circular use this parameter", action='store_true', default=False)
     args = parser.parse_args()
-    workdir = os.path.dirname(os.path.abspath(str(args.step1)))
-    generationFilesStep2(args.step1, args.insert, args.kmerSize, args.probability_insert,
+    workdir = os.path.dirname(os.path.abspath(str(args.unitigs)))
+    generationFilesStep2(args.unitigs, args.insert, args.kmerSize, args.probability_insert,
                          args.circular, args.name, workdir)

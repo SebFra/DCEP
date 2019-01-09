@@ -4,7 +4,7 @@ import os
 import sys
 import pandas as pd
 import networkx as nx
-import GraphMaker as gm
+import DcepGenerator.GraphMaker as gm
 
 
 def inv_orientation(letter):

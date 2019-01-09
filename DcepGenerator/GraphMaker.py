@@ -2,7 +2,6 @@
 
 import networkx as nx
 import itertools
-import graph_tools
 import os
 import parser
 
