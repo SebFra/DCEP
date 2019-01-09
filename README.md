@@ -12,7 +12,7 @@ And it's done ;)
 The DCEP problem (for Distance Constraint elementary path) has been presented for the first time during the CTW 2018.
 The problem consists to find a path that'll satisfy the maximum number of distances in a given Set.
 Initially it's coming from the need to solve simultaneously two well known NP-Complet genomic problem called scaffolding and gap-filling.
-This simulator is a tool to produce instances of this problem similar of the ones we see in genomics and to benchmark different approaches to solve them.
+This simulator is a tool to produce instances of this problem similar to the ones we see in genomics and to benchmark different approaches to solve them.
 
 ## Usage
 There are two main steps to produce an instance of the DCEP problem :
