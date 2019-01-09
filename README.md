@@ -7,7 +7,7 @@ This simulator is a tool to produce instances of this problem similar of the one
 ## Usage
 There are two main steps to produce an instance of the DCEP problem :
 
-#First we need to produce the non-oriented unitigs :
+# First we need to produce the non-oriented unitigs :
 ```sh
 UnitigsGenerator.py -Nnr 2 -Nr 4 -MaxR 3
 ```
@@ -30,7 +30,7 @@ The repeated unitig will appear between two and MaxR in the solution.
 ### OUTPUT
 A file name_step1.txt that contains all the unitigs, their length and their copy count.
 Example :
-'''
+```
 1__len__5598	1
 2__len__1977	1
 3__len__144	    2
@@ -38,7 +38,7 @@ Example :
 5__len__160	    2
 6__len__160	    2
 
-'''
+```
 
 How to read it ? For the first line : "The unitig 1 has a length of 5598 characters and appeared only once in the solution".
 
@@ -48,8 +48,8 @@ ProblemGenerator.py -s1 NO_NAME_step1.txt -kmer 101 -n testClassicSmall
 
 ```
 ### Required
-*-u : unitigs file (generated with UnitigsGenerator.py)
-*-n : name of the problem generated
+* -u : unitigs file (generated with UnitigsGenerator.py)
+* -n : name of the problem generated
 * -kmer : overlaps maximum = kmer - 1, must be superior to the smallest unitig.
 
 The non repeated unitig will appear only once in the solution.
