@@ -54,7 +54,7 @@ How to read it ? For the first line : "The unitig 1 has a length of 5598 charact
 
 # Last : Distances, problem and solution generation
 ```sh
-ProblemGenerator.py -s1 NO_NAME_step1.txt -kmer 101 -n testClassicSmall
+ProblemGenerator.py -u NO_NAME_step1.txt -kmer 101 -n testClassicSmall
 
 ```
 ### Required

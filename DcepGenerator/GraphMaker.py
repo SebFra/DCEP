@@ -1,9 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import networkx as nx
 import itertools
 import os
-import parser
+import DcepGenerator.parser as parser
+import DcepGenerator.graph_tools as graph_tools
 
 LIMIT_SIZE = 100
 

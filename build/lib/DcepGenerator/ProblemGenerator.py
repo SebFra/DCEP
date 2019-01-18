@@ -1,13 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf8
 
 import argparse
 import random
 import networkx as nx
 import os
-import convertisseur as cv
-import GraphMaker as gm
-from statistics import mean
+import DcepGenerator.convertisseur as cv
+import DcepGenerator.GraphMaker as gm
 
 
 def buildSolution(copyCount):
@@ -133,7 +132,8 @@ def writeStepFile(copyCount, Overlaps, Links, name, workdir):
 def writeSolutionReport(Solution, dicoLinksSolution, name, workdir):
     with open(workdir + '/' + name + "_solution.report", "w") as file:
         file.write('Solution of ' + name + '\n')
-        file.write('Nb links to satisfied : ' + str(len(dicoLinksSolution)) + "\n")
+        nb_distances = sum([len(dicoLinksSolution[(u,v)]) for (u,v) in dicoLinksSolution])
+        file.write('Nb links to satisfied : ' + str(nb_distances) + "\n")
         file.write("*********************************************************\n")
         file.write("LINKS :\n")
         for (u, v) in dicoLinksSolution:
@@ -149,11 +149,14 @@ def writeSolutionReport(Solution, dicoLinksSolution, name, workdir):
 def generationFilesStep2(fileStep1, insertSize, kmerSize, probInsert, circular, name, workdir):
     setUnitigs = set()
     copyCount = {}
+    setNonRepeatedUnitigs = set()
     with open(fileStep1, "r") as file:
         for line in file:
             lineSplit = line.split()
             setUnitigs.add(lineSplit[0])
             copyCount[lineSplit[0]] = int(lineSplit[1])
+            if copyCount[lineSplit[0]] == 1:
+                setNonRepeatedUnitigs.add(lineSplit[0].split('__')[0])
     Solution = buildSolution(copyCount)
     Overlaps = buildOverlapsFromSolution(Solution, circular)
     Links_Solution, graph_solution, position_dict = buildLinksFromSolution(kmerSize, insertSize, Solution, probInsert,
@@ -180,6 +183,9 @@ def generationFilesStep2(fileStep1, insertSize, kmerSize, probInsert, circular, 
     nx.write_graphml(multigraph_DCEP, workdir + '/Graphes/Problem/' + name + '_DCEP_multigraph.graphml')
     workdir = workdir + '/Graphes/Problem'
     cv.multigraph_DCEP_to_dat(multigraph_DCEP, workdir, name, dico_nodes)
+    cv.nonRepeated_to_dat(setNonRepeatedUnitigs, workdir, name)
+    multigraph_DCEP_solution = cv.multigraph_DCEP_solution(Solution, multigraph_DCEP, circular)
+    cv.multigraph_DCEP_to_dat(multigraph_DCEP_solution, workdir, name+'_SOLUTION_', dico_nodes)
     exit()
 
 
@@ -192,8 +198,8 @@ def restricted_probability(x):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Distances and solution simulator')
-    parser.add_argument('-s1', "--step1",
-                        help="step1 file", required=True, type=str)
+    parser.add_argument('-u', "--unitigs",
+                        help="unitigs file", required=True, type=str)
     parser.add_argument('-n', "--name",
                         help="name for the step 2 file", required=True, type=str)
     parser.add_argument('-i', "--insert",
@@ -205,6 +211,6 @@ if __name__ == '__main__':
     parser.add_argument('-c', "--circular",
                         help="If genome is circular use this parameter", action='store_true', default=False)
     args = parser.parse_args()
-    workdir = os.path.dirname(os.path.abspath(str(args.step1)))
-    generationFilesStep2(args.step1, args.insert, args.kmerSize, args.probability_insert,
+    workdir = os.path.dirname(os.path.abspath(str(args.unitigs)))
+    generationFilesStep2(args.unitigs, args.insert, args.kmerSize, args.probability_insert,
                          args.circular, args.name, workdir)

@@ -17,3 +17,4 @@ solve;
 display x;
 display g;
 display card{(u,v,'links') in Edges : g[u,v,'links'] = 1};
+

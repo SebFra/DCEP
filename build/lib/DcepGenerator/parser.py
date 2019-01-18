@@ -2,7 +2,7 @@
 
 import re
 import sys
-import graph_tools as graph_tools
+import DcepGenerator.graph_tools as graph_tools
 
 
 def parse_nodes(contigs_list):

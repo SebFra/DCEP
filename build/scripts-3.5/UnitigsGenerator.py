@@ -1,4 +1,4 @@
-#!python
+#!/home/seb/KoriPython/bin/python3
 # coding: utf8
 
 import argparse
@@ -38,24 +38,24 @@ def generationFileStep1(NumberNonRepeatedUnitigs, NumberRepeatedUnitigs, MaxNumb
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Unitig and repetitions simulator')
-    parser.add_argument('-Nnr', "--NumberNonRepeatedUnitigs",
+    parser.add_argument('-Nnr', "--Number_Non_Repeated_Unitigs",
                         help="Number of non repeated unitigs that you want to have in the solution", required=True, type=int)
-    parser.add_argument('-Nr', "--NumberRepeatedUnitigs",
+    parser.add_argument('-Nr', "--Number_Repeated_Unitigs",
                         help="Number of repeated unitigs that you want to have in the solution", required=True, type=int)
-    parser.add_argument('-MaxR', "--MaxNumberOfRepetition",
+    parser.add_argument('-MaxR', "--Max_Number_Of_Repetition",
                         help="Maximum of occurence for a repeated unitig", required=False, default=3, type = int)
-    parser.add_argument('-name', "--name",
+    parser.add_argument('-n', "--name",
                         help="Name of the instance", required=False, default="NO_NAME", type=str)
-    parser.add_argument('-MinWnr', "--MinimumWeightNonRepeated",
+    parser.add_argument('-MinWnr', "--Minimum_Weight_Non_Repeated",
                         help="Minimum Weight for a non repeated unitig", required=False, default=200, type = int)
-    parser.add_argument('-MaxWnr', "--MaximumWeightNonRepeated",
+    parser.add_argument('-MaxWnr', "--Maximum_Weight_Non_Repeated",
                         help="Maximum Weight for a non repeated unitig", required=False, default=50000, type = int)
-    parser.add_argument('-MinWr', "--MinimumWeightRepeated",
+    parser.add_argument('-MinWr', "--Minimum_Weight_Repeated",
                         help="Minimum Weight for a repeated unitig", required=False, default=102, type = int)
-    parser.add_argument('-MaxWr', "--MaximumWeightRepeated",
+    parser.add_argument('-MaxWr', "--Maximum_Weight_Repeated",
                         help="Maximum Weight for a repeated unitig", required=False, default=199, type = int)
     args = parser.parse_args()
-    generationFileStep1(args.NumberNonRepeatedUnitigs, args.NumberRepeatedUnitigs, args.MaxNumberOfRepetition,
+    generationFileStep1(args.Number_Non_Repeated_Unitigs, args.Number_Repeated_Unitigs, args.Max_Number_Of_Repetition,
                         args.name,
-                        args.MinimumWeightNonRepeated, args.MaximumWeightNonRepeated, args.MinimumWeightRepeated,
-                        args.MaximumWeightRepeated)
+                        args.Minimum_Weight_Non_Repeated, args.Maximum_Weight_Non_Repeated, args.Minimum_Weight_Repeated,
+                        args.Maximum_Weight_Repeated)

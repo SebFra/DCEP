@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf8
 
 import argparse
@@ -7,7 +7,6 @@ import networkx as nx
 import os
 import DcepGenerator.convertisseur as cv
 import DcepGenerator.GraphMaker as gm
-from statistics import mean
 
 
 def buildSolution(copyCount):
@@ -133,7 +132,8 @@ def writeStepFile(copyCount, Overlaps, Links, name, workdir):
 def writeSolutionReport(Solution, dicoLinksSolution, name, workdir):
     with open(workdir + '/' + name + "_solution.report", "w") as file:
         file.write('Solution of ' + name + '\n')
-        file.write('Nb links to satisfied : ' + str(len(dicoLinksSolution)) + "\n")
+        nb_distances = sum([len(dicoLinksSolution[(u, v)]) for (u, v) in dicoLinksSolution])
+        file.write('Nb links to satisfied : ' + str(nb_distances) + "\n")
         file.write("*********************************************************\n")
         file.write("LINKS :\n")
         for (u, v) in dicoLinksSolution:
@@ -149,11 +149,14 @@ def writeSolutionReport(Solution, dicoLinksSolution, name, workdir):
 def generationFilesStep2(fileStep1, insertSize, kmerSize, probInsert, circular, name, workdir):
     setUnitigs = set()
     copyCount = {}
+    setNonRepeatedUnitigs = set()
     with open(fileStep1, "r") as file:
         for line in file:
             lineSplit = line.split()
             setUnitigs.add(lineSplit[0])
             copyCount[lineSplit[0]] = int(lineSplit[1])
+            if copyCount[lineSplit[0]] == 1:
+                setNonRepeatedUnitigs.add(lineSplit[0].split('__')[0])
     Solution = buildSolution(copyCount)
     Overlaps = buildOverlapsFromSolution(Solution, circular)
     Links_Solution, graph_solution, position_dict = buildLinksFromSolution(kmerSize, insertSize, Solution, probInsert,
@@ -180,6 +183,9 @@ def generationFilesStep2(fileStep1, insertSize, kmerSize, probInsert, circular, 
     nx.write_graphml(multigraph_DCEP, workdir + '/Graphes/Problem/' + name + '_DCEP_multigraph.graphml')
     workdir = workdir + '/Graphes/Problem'
     cv.multigraph_DCEP_to_dat(multigraph_DCEP, workdir, name, dico_nodes)
+    cv.nonRepeated_to_dat(setNonRepeatedUnitigs, workdir, name)
+    multigraph_DCEP_solution = cv.multigraph_DCEP_solution(Solution, multigraph_DCEP, circular)
+    cv.multigraph_DCEP_to_dat(multigraph_DCEP_solution, workdir, name + '_SOLUTION_', dico_nodes)
     exit()
 
 

@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf8
 import os
 import sys
 import pandas as pd
 import networkx as nx
-import GraphMaker as gm
+import DcepGenerator.GraphMaker as gm
 
 
 def inv_orientation(letter):
@@ -971,6 +971,41 @@ def graph_ml_to_data_solution(Solution, circular, graph_file_overlaps, graph_fil
         write_reverse_in_file(file, nodes)
         write_b_inf_in_file(file, list_links, graph_links)
         write_b_sup_in_file(file, list_links, graph_links)
+    print("Fichier " + name_for_data_file + " créé")
+
+def multigraph_DCEP_solution(Solution, multigraph_DCEP, circular):
+    multigraph_DCEP_copy = multigraph_DCEP.copy()
+    unitigsNumber = set([int(u.split('__')[0]) for u in Solution])
+    nbOcc = {}
+    SolutionOcc = []
+    for unitigNumber in unitigsNumber:
+        nbOcc[unitigNumber] = 0
+    for u in Solution:
+        u_number = int(u.split('__')[0])
+        u_orientation = u.split('__')[2].split('_')[1]
+        u_occ = str(u_number) + '_' + str(nbOcc[u_number]) + '_' + u_orientation
+        nbOcc[u_number] = nbOcc[u_number] + 1
+        SolutionOcc.append(u_occ)
+
+    overlaps_solution = list(zip(SolutionOcc, SolutionOcc[1:]))
+    if circular:
+        overlaps_solution.append((SolutionOcc[-1], SolutionOcc[0]))
+
+    for (u, v, k) in multigraph_DCEP.edges(keys=True):
+        if multigraph_DCEP.edge[u][v][k]['Type'] == 'overlaps' and (u,v) not in overlaps_solution:
+            multigraph_DCEP_copy.remove_edge(u,v,k)
+    return multigraph_DCEP_copy
+
+def nonRepeated_to_dat(NonRepeatedUnitigs, workdir, name):
+    name_for_data_file = workdir + '/' + name + '_nonRepeated_.dat'
+    with open(name_for_data_file, "w") as file:
+        file.write("data;\n")
+        file.write("set nonRepeatedUnitigs :=\n")
+        for unitig in NonRepeatedUnitigs:
+            number = unitig.split('__')[0]
+            file.write(number+'_0_F'+"\n")
+            file.write(number + '_0_R' + "\n")
+        file.write(";\n")
     print("Fichier " + name_for_data_file + " créé")
 
 if __name__ == '__main__':
