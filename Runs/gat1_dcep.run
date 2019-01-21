@@ -10,7 +10,7 @@ option gurobi_options 'outlev 1';
 
 model Models/gat1_dcep.mod;
 
-data Datas/Genomics/Chloroplastes_200_100_kmergenie_05_05_2018/AcorusCalamus/Graphes/Problem/AcorusCalamus_DCEP_multigraph.dat;
+data DataSimulated/test1_SOLUTION__DCEP_multigraph.dat;
 
 solve;
 

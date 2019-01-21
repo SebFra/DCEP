@@ -10,21 +10,13 @@ option gurobi_options 'outlev 1';
 
 model Models/gat2_dcep.mod;
 
-data Datas/Genomics/Chloroplastes_200_100_kmergenie_05_05_2018/AcorusCalamus/Graphes/Problem/AcorusCalamus_DCEP_multigraph.dat;
-
-let Edges_prime := Edges;
-for {v in V} let Edges_prime := Edges_prime union {('s', v, 'overlaps'), (v, 't', 'overlaps')};
-for {(u,v,'overlaps') in Edges_prime}{
-	if(u = 's') then let l_st[u,v,'overlaps'] := 0;
-	else if (v = 't') then let l_st[u,v,'overlaps'] := w[u];
-	else let l_st[u,v,'overlaps'] := l[u,v,'overlaps'];
-}
+data DataSimulated/test1_SOLUTION__DCEP_multigraph.dat;
 
 solve;
 
 display x;
 display g;
 display card{(u,v,'links') in Edges : g[u,v,'links'] = 1};
-display{(u,v,'links') in Edges : g[u,v,'links'] = 1}(sum{(u,z,'overlaps') in Edges_prime}  f[u,z,'overlaps'] - sum{(z,v,'overlaps') in Edges_prime}  f[z,v,'overlaps']  + sum{(u,z,'overlaps') in Edges_prime} l_st[u,z,'overlaps']*x[u,z,'overlaps']);
+display{(u,v,'links') in Edges : g[u,v,'links'] = 1}(sum{(u,z,'overlaps') in Edges}  f[u,z,'overlaps'] - sum{(z,v,'overlaps') in Edges}  f[z,v,'overlaps']  + sum{(u,z,'overlaps') in Edges} l[u,z,'overlaps']*x[u,z,'overlaps']);
 
 

@@ -11,7 +11,7 @@ param l{Edges} integer;
 param l_st{Edges_prime} integer;
 param marge_error := 350;
 param M := 100*sum{(u,v,c) in Edges}l[u,v,c];
-param W := sum{(u,v,c) in Edges : c = 'overlaps'}l[u,v,c];
+param W := 2*sum{(u,v,c) in Edges : c = 'overlaps'}l[u,v,c];
 
 var x{(u,v,c) in Edges_prime : c = 'overlaps'} binary;
 var i{V}, binary;
